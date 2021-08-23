@@ -116,6 +116,7 @@ const resolvers = {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
+          // user can't be friends with the same person twice, so we use $addToSet operator insteaa
           { $addToSet: { friends: friendId } },
           { new: true }
         ).populate("friends");
