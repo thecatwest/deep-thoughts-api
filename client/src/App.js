@@ -9,8 +9,10 @@ import Home from './pages/Home';
 
 // establish connection to back-end server's GraphQL endpoint
 const httpLink = createHttpLink({
-  // must use absolute path to server: React runs on 3000, server runs on 3001
-  uri: 'http://localhost:3001/graphql',
+  // must use absolute path to server: React runs on 3000, server runs on 3001: 'http://localhost:3001/graphql'
+  // however, production code will not be able to use absolute path, so you change it to '/graphql'; then add the proxy key-value pair to package.json
+  // uri stands for Uniform Resource Identifier
+  uri: '/graphql',
 });
 
 // use ApolloClient() constructor to instantiate the Apollo Client instance and create the connection to the API endpoint
